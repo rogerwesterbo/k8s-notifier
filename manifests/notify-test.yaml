@@ -1,0 +1,9 @@
+apiVersion: task.hemmelig.io/v1
+kind: Notify
+metadata:
+  name: test-notify
+spec:
+  name: test-notify
+  type:
+    apiVersion: v1
+    kind: Pod

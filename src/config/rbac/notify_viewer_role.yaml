@@ -1,0 +1,23 @@
+# permissions for end users to view notifies.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: src
+    app.kubernetes.io/managed-by: kustomize
+  name: notify-viewer-role
+rules:
+- apiGroups:
+  - task.hemmelig.io
+  resources:
+  - notifies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - task.hemmelig.io
+  resources:
+  - notifies/status
+  verbs:
+  - get

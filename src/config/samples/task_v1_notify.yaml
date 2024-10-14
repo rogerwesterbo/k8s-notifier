@@ -1,0 +1,9 @@
+apiVersion: task.hemmelig.io/v1
+kind: Notify
+metadata:
+  labels:
+    app.kubernetes.io/name: src
+    app.kubernetes.io/managed-by: kustomize
+  name: notify-sample
+spec:
+  # TODO(user): Add fields here
