@@ -143,3 +143,27 @@ kubectl get notifies -A
 NAMESPACE   NAME          AGE
 default     test-notify   23s
 ```
+
+## Logg from reconsiler
+
+```golang
+func (r *NotifyReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
+	_ = log.FromContext(ctx)
+
+	notify := &taskv1.Notify{}
+	err := r.Get(ctx, req.NamespacedName, notify)
+	if err != nil {
+		if errors.IsNotFound(err) {
+			rlog.Info("Notify resource not found.")
+			return ctrl.Result{}, nil
+		}
+
+		rlog.Error("Error getting notify", err)
+		return ctrl.Result{}, err
+	}
+
+	rlog.Info("Reconciling Notify", rlog.String("name", notify.Name), rlog.String("namespace", notify.Namespace), rlog.String("type.apiversion", notify.Spec.Type.APIVersion), rlog.String("type.kind", notify.Spec.Type.Kind))
+
+	return ctrl.Result{}, nil
+}
+```
