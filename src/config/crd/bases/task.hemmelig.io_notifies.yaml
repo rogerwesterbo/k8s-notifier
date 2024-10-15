@@ -68,6 +68,11 @@ spec:
             type: object
           status:
             description: NotifyStatus defines the observed state of Notify
+            properties:
+              notified:
+                type: boolean
+              notifiedTimestamp:
+                type: string
             type: object
         type: object
     served: true

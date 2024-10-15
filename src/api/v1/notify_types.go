@@ -37,6 +37,9 @@ type NotifySpec struct {
 type NotifyStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+
+	Notified          bool   `json:"notified,omitempty"`
+	NotifiedTimestamp string `json:"notifiedTimestamp,omitempty"`
 }
 
 // +kubebuilder:object:root=true
